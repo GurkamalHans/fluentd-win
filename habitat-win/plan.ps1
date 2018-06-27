@@ -7,14 +7,9 @@ $pkg_deps=@(
 	"core/gcc-libs",
   "core/powershell"
 )
-$pkg_upstream_url="https://www.fluentd.org/"
-$pkg_description="Fluentd is an open source data collector, which lets \
-  you unify the data collection and consumption for a better use and \
-  understanding of data."
 $pkg_license=@("Apache-2.0")
 $pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
 $pkg_source="http://packages.treasuredata.com.s3.amazonaws.com/3/windows/td-agent-3.1.1-0-x64.msi"
-$pkg_bin_dirs="bin"
 $pkg_exports=@(
   "forwarded-port"="input.forward.port"
   "http-port"="input.http.port"
