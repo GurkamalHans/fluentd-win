@@ -1,24 +1,25 @@
-$pkg_name=@("fluentd")
-$pkg_origin=@("core")
-$pkg_version=@("1.0.2")
+$pkg_name="fluentd"
+$pkg_origin="gurkamalhans"
+$pkg_version=@"1.0.2"
 $pkg_deps=@(
-	"core/ruby"
-	"core/gcc"
-	"core/gcc-libs"
+	"core/ruby",
+	"core/gcc",
+	"core/gcc-libs",
+  "core/powershell"
 )
-$pkg_upstream_url=@("https://www.fluentd.org/")
+$pkg_upstream_url="https://www.fluentd.org/"
 $pkg_description="Fluentd is an open source data collector, which lets \
   you unify the data collection and consumption for a better use and \
   understanding of data."
 $pkg_license=@("Apache-2.0")
-$pkg_maintainer=@("The Habitat Maintainers <humans@habitat.sh>")
-$pkg_source=@("http://packages.treasuredata.com.s3.amazonaws.com/3/windows/td-agent-3.1.1-0-x64.msi")
-$pkg_bin_dirs=@("bin")
+$pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"
+$pkg_source="http://packages.treasuredata.com.s3.amazonaws.com/3/windows/td-agent-3.1.1-0-x64.msi"
+$pkg_bin_dirs="bin"
 $pkg_exports=@(
   "forwarded-port"="input.forward.port"
   "http-port"="input.http.port"
 )
-$pkg_exposes=@("forward-port" "http-port")
+$pkg_exposes=@("forward-port", "http-port")
 
 function Invoke-Download {
   return 0;
@@ -48,6 +49,6 @@ GEMFILE
 }
 
 function Invoke-Install {
-  cp -R . "$pkg_prefix/"
+  copy -r . "$pkg_prefix/"
   fix_interpreter "$pkg_prefix/bin/*" core/coreutils bin/env
 }
