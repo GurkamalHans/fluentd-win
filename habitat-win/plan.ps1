@@ -16,34 +16,12 @@ $pkg_exports=@(
 )
 $pkg_exposes=@("forward-port", "http-port")
 
-function Invoke-Download {
-  return 0;
-}
+function Invoke-Download { }
 
-function Invoke-Verify {
-  return 0;
-}
+function Invoke-Verify { }
 
-function Invoke-Unpack {
-  return 0;
-}
+function Invoke-Unpack { }
 
-function Invoke-Build {
-  local _bundler_dir
-  _bundler_dir=$(pkg_path_for bundler)
+function Invoke-Build { }
 
-  export GEM_HOME=${pkg_path}/vendor/bundle
-  export GEM_PATH=${_bundler_dir}:${GEM_HOME}
-
-  cat > Gemfile <<-GEMFILE
-    source 'https://rubygems.org'
-    gem 'fluentd', '= ${pkg_version}'
-GEMFILE
-  
-  bundle install --jobs 2 --retry 5 --path ./vendor/bundle --binstubs
-}
-
-function Invoke-Install {
-  copy -r . "$pkg_prefix/"
-  fix_interpreter "$pkg_prefix/bin/*" core/coreutils bin/env
-}
+function Invoke-Install { }
